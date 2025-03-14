@@ -1,0 +1,25 @@
+package com.deepeshsingh19.user_profile_app.controller;
+
+import com.deepeshsingh19.user_profile_app.model.UserProfile;
+import com.deepeshsingh19.user_profile_app.service.UserProfileService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.http.ResponseEntity;
+import org.springframework.http.HttpStatus;
+
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/users")
+public class UserProfileController {
+
+    @Autowired
+    private UserProfileService service;
+
+    @GetMapping
+    public List<UserProfile> getUsers() {
+        return service.getAllUsers();
+    }
+
+}
