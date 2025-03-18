@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpStatus;
 
-
 import java.util.List;
 
 @RestController
@@ -17,9 +16,16 @@ public class UserProfileController {
     @Autowired
     private UserProfileService service;
 
+    // Get all users
     @GetMapping
     public List<UserProfile> getUsers() {
         return service.getAllUsers();
     }
 
+    // Add a new user
+    @PostMapping
+    public ResponseEntity<UserProfile> createUser(@RequestBody UserProfile user) {
+        UserProfile savedUser = service.addUser(user);
+        return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
+    }
 }

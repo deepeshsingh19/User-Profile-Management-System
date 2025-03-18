@@ -13,7 +13,13 @@ public class UserProfileService {
     @Autowired
     private UserProfileRepository repository;
 
+    // Get all users
     public List<UserProfile> getAllUsers() {
         return repository.findAll();
+    }
+
+    // Add a new user
+    public UserProfile addUser(UserProfile user) {
+        return repository.save(user);
     }
 }
